@@ -1,0 +1,133 @@
+:root {
+  color-scheme: dark;
+  font-family: Inter, system-ui, sans-serif;
+  --bg: #0f141f;
+  --panel: #171f2d;
+  --border: #2a3850;
+  --text: #e8edf8;
+  --muted: #9fb2cf;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: radial-gradient(circle at top, #1b263a 0%, var(--bg) 45%);
+  color: var(--text);
+}
+
+.app-shell {
+  width: min(1320px, 96vw);
+  margin: 1.2rem auto;
+  display: grid;
+  gap: 0.85rem;
+  grid-template-columns: 270px 1fr 270px;
+  grid-template-areas:
+    'top top top'
+    'left center right'
+    'bottom bottom bottom';
+}
+
+.topbar {
+  grid-area: top;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.9rem 1rem;
+}
+
+.topbar h1 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.tick-pill {
+  border: 1px solid var(--border);
+  background: #111826;
+  padding: 0.4rem 0.8rem;
+  border-radius: 999px;
+}
+
+.panel {
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  background: linear-gradient(180deg, #192334 0%, #141d2b 100%);
+  padding: 0.95rem;
+}
+
+.panel h2 {
+  margin-top: 0;
+  font-size: 1rem;
+  color: var(--muted);
+}
+
+.panel-left { grid-area: left; }
+.panel-center { grid-area: center; }
+.panel-right { grid-area: right; }
+.panel-bottom { grid-area: bottom; }
+
+.panel-left dl {
+  margin: 0;
+  display: grid;
+  gap: 0.55rem;
+}
+
+.panel-left div {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 0.45rem;
+  border-bottom: 1px solid #25344d;
+}
+
+#map-canvas {
+  width: min(100%, 720px);
+  height: auto;
+  aspect-ratio: 1 / 1;
+  display: block;
+  border: 1px solid #314666;
+  border-radius: 0.4rem;
+  margin: 0 auto;
+  image-rendering: pixelated;
+  background: #0a111d;
+}
+
+.legend {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.swatch {
+  display: inline-block;
+  width: 0.8rem;
+  height: 0.8rem;
+  border-radius: 0.15rem;
+  margin-right: 0.3rem;
+}
+
+.swatch.plains { background: #8fae5e; }
+.swatch.forest { background: #2e6b3a; }
+.swatch.hill { background: #7a6a59; }
+
+#event-log {
+  margin: 0;
+  padding-left: 1.15rem;
+  color: var(--muted);
+}
+
+@media (max-width: 1050px) {
+  .app-shell {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      'top'
+      'left'
+      'center'
+      'right'
+      'bottom';
+  }
+}
