@@ -2,33 +2,33 @@
 
 Frontier Hold is a medieval-flavored idle colony simulator prototype.
 
-## V1 Contract
+## Current scope
 
 - **World size:** `25x25` grid.
 - **Tick rate:** `1 second real time = 1 in-game hour`.
-- **Population model:** aggregate worker counts (no per-villager objects).
+- **Population model:** aggregate worker counts with permadeath.
 - **Single-player:** one global in-memory simulation instance.
 
-### Planned simulation systems
+## Implemented gameplay (Phase 1)
 
-- Resources: wood, stone, food.
-- Worker assignments: lumberjacks, farmers, miners, builders, militia, idle.
-- Buildings with construction progress and terrain constraints.
-- Danger growth and raid events with permanent casualties.
+- Worker assignment pools: idle, lumberjack, farmer, miner, builder, militia.
+- Hourly production and consumption with deterministic starvation deaths.
+- Terrain-constrained building placement for Farm and House.
+- FIFO construction queue with builder-based progress (`1 builder = 1 progress/hour`).
+- Farm support cap (`1 farm supports 3 farmers`) and wheat field rendering for active farmers.
 
-### API (initial scaffold)
+## API
 
 - `GET /state`: returns current game state.
-
-This repository currently includes a minimal FastAPI scaffold with a background tick loop and static frontend shell.
+- `POST /assign_workers`
+  - Payload: `{ "lumberjack": int, "farmer": int, "miner": int, "builder": int, "militia": int }`
+- `POST /build`
+  - Payload: `{ "type": "farm|house", "x": int, "y": int }`
 
 ## Run locally
 
 ```bash
-python -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-uvicorn main:app --reload
+python main.py
 ```
 
 Open `http://127.0.0.1:8000`.
