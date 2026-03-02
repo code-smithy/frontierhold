@@ -1,0 +1,28 @@
+:root {
+  color-scheme: dark;
+  font-family: Inter, system-ui, sans-serif;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background: #10141d;
+  color: #e7ecf3;
+}
+
+main {
+  width: min(420px, 90vw);
+  padding: 1.5rem;
+  border: 1px solid #2a3344;
+  border-radius: 0.75rem;
+  background: #171d29;
+}
+
+.panel {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.2rem;
+}
