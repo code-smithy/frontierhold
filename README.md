@@ -20,12 +20,15 @@ Frontier Hold is a medieval-flavored idle colony simulator prototype.
 
 - `GET /state`: returns current game state.
 
-This repository currently includes a minimal Python HTTP scaffold with a background tick loop and static frontend shell.
+This repository currently includes a minimal FastAPI scaffold with a background tick loop and static frontend shell.
 
 ## Run locally
 
 ```bash
-python main.py
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+uvicorn main:app --reload
 ```
 
 Open `http://127.0.0.1:8000`.
