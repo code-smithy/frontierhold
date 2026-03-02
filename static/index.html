@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Frontier Hold</title>
+    <link rel="stylesheet" href="/static/style.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <h1>Frontier Hold</h1>
+        <div class="tick-pill">Tick <strong id="tick">0</strong></div>
+      </header>
+
+      <aside class="panel panel-left">
+        <h2>Colony Overview</h2>
+        <dl>
+          <div><dt>Population</dt><dd id="population">0</dd></div>
+          <div><dt>Housing</dt><dd id="housing">0</dd></div>
+          <div><dt>Food</dt><dd id="food">0</dd></div>
+          <div><dt>Wood</dt><dd id="wood">0</dd></div>
+          <div><dt>Stone</dt><dd id="stone">0</dd></div>
+          <div><dt>Ore</dt><dd id="ore">0</dd></div>
+        </dl>
+        <div class="metrics">
+          <p>Δ Food/h: <strong id="food-delta">0</strong></p>
+          <p>Build speed: <strong id="build-speed">0</strong></p>
+          <p class="warning" id="warning-text"></p>
+        </div>
+      </aside>
+
+      <main class="panel panel-center">
+        <h2>Frontier Map</h2>
+        <div class="toolbar">
+          <label for="build-type">Build:</label>
+          <select id="build-type">
+            <option value="farm">Farm</option>
+            <option value="house">House</option>
+          </select>
+          <button id="build-mode">Enable Build Mode</button>
+        </div>
+        <canvas id="map-canvas" width="600" height="600" aria-label="25 by 25 colony map"></canvas>
+        <p class="legend">
+          <span><i class="swatch plains"></i> Plains</span>
+          <span><i class="swatch forest"></i> Forest</span>
+          <span><i class="swatch hill"></i> Hill</span>
+          <span><i class="swatch water"></i> Water</span>
+          <span><i class="swatch wheat"></i> Wheat</span>
+        </p>
+      </main>
+
+      <aside class="panel panel-right">
+        <h2>Workers</h2>
+        <form id="worker-form"></form>
+        <p>Idle: <strong id="idle-count">0</strong></p>
+        <button id="apply-workers">Apply Workers</button>
+
+        <h2>Construction Queue</h2>
+        <ul id="queue-list"></ul>
+      </aside>
+
+      <section class="panel panel-bottom">
+        <h2>Event Log</h2>
+        <ul id="event-log"></ul>
+      </section>
+    </div>
+
+    <script src="/static/app.js"></script>
+  </body>
+</html>
